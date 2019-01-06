@@ -1,0 +1,21 @@
+.header {
+  width: 100%;
+  height: 130px;
+  // border: 1px solid #000;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 30px;
+}
+
+.nav {
+  display: flex;
+  li {
+    font-size: 14px;
+    margin: 0 45px; 
+    a {
+      color: #ffffff;
+    }
+  }
+}

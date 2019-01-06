@@ -1,0 +1,28 @@
+image: registry.c3.b2c.srv/online/ci:node-v9.0-onbuild
+
+stages:
+  - build
+
+# 为了加快打包速度，cache 功能可能对你非常有用
+cache:
+  key: "$CI_PROJECT_ID"
+  untracked: true
+  paths:  #添加需要cache的目录
+  - node_modules
+
+build:
+  stage: build
+
+  script:
+    - npm install --registry=https://rnpm.pf.xiaomi.com
+    - rm -rf target
+    - npm run prod
+    - mkdir .target && mv dist/* .target && mv .target target
+
+  only:
+    - tags
+
+  artifacts:
+    paths:
+     - target/*
+    untracked: false
